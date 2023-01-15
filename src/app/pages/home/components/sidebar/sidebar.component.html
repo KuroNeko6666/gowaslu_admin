@@ -1,0 +1,70 @@
+<div class="flex flex-col gap-y-4">
+  <div class="flex flex-row w-full place-items-center py-3">
+    <div class="basis-1/5 text-center">
+      <fa-icon [icon]="icon.faHome"></fa-icon>
+    </div>
+    <div class="basis-3/5">
+      <span class="font-bold text-xl">Gowaslu</span>
+    </div>
+    <div class="basis-1/5 text-center">
+      <button class="hover:bg-slate-100 px-3 py-2 rounded-full md:hidden" (click)="hideSideBar.emit()">
+        <fa-icon [icon]="icon.faX" class="text-sm"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+
+    <ng-container *ngFor="let item of menu">
+
+      <ng-container *ngIf="!item.children.length">
+        <div class="rounded-lg"
+          [ngClass]="currentPath == item.path ? 'bg-green-100 hover:bg-green-200 text-green-900' : 'hover:bg-green-50'">
+          <a href="javascript:void(0)" class="flex flex-row py-2" (click)="changePage(item.path)">
+            <div class="basis-1/5 text-center">
+              <fa-icon [icon]="item.icon" class="text-sm"></fa-icon>
+            </div>
+            <div class="basis-3/5">
+              <span class="text-sm">{{ item.name }}</span>
+            </div>
+          </a>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="item.children.length">
+        <div class="rounded-lg"
+          [ngClass]="currentPath?.includes(item.path) || item.collapse ? 'bg-green-50 ' : 'hover:bg-green-50' ">
+          <a href="javascript:void(0)" class="flex flex-row py-2" (click)="item.collapse = !item.collapse">
+            <div class="basis-1/5 text-center">
+              <fa-icon [icon]="icon.faHome" class="text-sm"></fa-icon>
+            </div>
+            <div class="basis-3/5">
+              <span class="text-sm">Account Master</span>
+            </div>
+            <div class="basis-1/5 text-center">
+              <fa-icon [icon]="currentPath?.includes(item.path) || item.collapse ? icon.faArrowDown : icon.faArrowRight"
+                class="text-sm"></fa-icon>
+            </div>
+          </a>
+          <ng-container *ngIf="currentPath?.includes(item.path) || item.collapse">
+            <div class="flex flex-col gap-y-2 m-2">
+              <ng-container *ngFor="let subitem of item.children">
+                <div class="rounded-lg"
+                  [ngClass]="currentPath == subitem.path ? 'bg-green-200 hover:bg-green-300 text-green-900' : 'hover:bg-green-100'">
+                  <a href="javascript:void(0)" class="flex flex-row py-2" (click)="changePage(subitem.path)">
+                    <div class="basis-1/5 text-center">
+                    </div>
+                    <div class="basis-3/5">
+                      <span class="text-sm">{{ subitem.name }}</span>
+                    </div>
+                  </a>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+
+</div>

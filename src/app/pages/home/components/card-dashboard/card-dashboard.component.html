@@ -1,0 +1,17 @@
+<div class="py-4 px-2 bg-white shadow-lg rounded-lg border-l-8 border-green-500">
+  <div class="flex flex-row place-items-center">
+    <div class="basis-1/5 text-center">
+      <fa-icon [icon]="icon" class="text-2xl"></fa-icon>
+    </div>
+    <div class="basis-3/5">
+      <div class="flex flex-col">
+        <span class="text-xs">{{ title }}</span>
+        <span class="text-xl font-bold">{{ value }}</span>
+      </div>
+    </div>
+    <div class="basis-1/5 text-center flex flex-row gap-x-1" [ngClass]="isIncrement ? 'text-green-500' : 'text-red-500'">
+      <fa-icon [icon]="isIncrement ? arrow.faArrowUp : arrow.faArrowDown" class="text-xs"></fa-icon>
+      <span class="text-xs">20{{ isIncrement? '+' : '-' }}</span>
+    </div>
+  </div>
+</div>

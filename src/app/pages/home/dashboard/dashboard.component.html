@@ -1,0 +1,20 @@
+<div class="flex flex-col">
+  <div class="grid grid-cols-12 gap-2 lg:gap-3">
+    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+      <app-card-dashboard [icon]="icon.faAllUser" title="total account" [value]="allAccount.toString()" [isIncrement]="true" valueChange="20">
+      </app-card-dashboard>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+      <app-card-dashboard [icon]="icon.faUser" title="total user" [value]="allUser.toString()" [isIncrement]="true" valueChange="20">
+      </app-card-dashboard>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+      <app-card-dashboard [icon]="icon.faAdmin" title="total admin" [value]="allAdmin.toString()" [isIncrement]="false" valueChange="5">
+      </app-card-dashboard>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+      <app-card-dashboard [icon]="icon.faOperator" title="total operator" [value]="allOperator.toString()" [isIncrement]="true" valueChange="5">
+      </app-card-dashboard>
+    </div>
+  </div>
+</div>

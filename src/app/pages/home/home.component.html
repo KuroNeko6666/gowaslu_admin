@@ -1,0 +1,22 @@
+<div class="grid grid-cols-12 grid-flow-col-dense h-screen bg-slate-100 text-slate-800">
+  <div class="absolute w-1/2 md:w-auto md:static md:col-span-4 lg:col-span-3 xl:col-span-2 p-3"
+    *ngIf="!isHidden">
+    <div class="shadow-lg h-full p-3 bg-white rounded-lg">
+      <app-sidebar (hideSideBar)="hideSideBar()"></app-sidebar>
+    </div>
+  </div>
+  <div class=" p-3 flex flex-col gap-y-3"
+    [ngClass]="!isHidden ? 'col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10' : 'col-span-12' ">
+    <div class="shadow-lg p-3 bg-white rounded-lg">
+      <button class="hover:bg-slate-100 px-3 py-2 rounded-full" (click)="hideSideBar()">
+        <fa-icon [icon]="icon.faBars"></fa-icon>
+      </button>
+      <button class="hover:bg-slate-100 px-3 py-2 rounded-full" (click)="logout()">
+        logout
+      </button>
+    </div>
+    <div class="h-full">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

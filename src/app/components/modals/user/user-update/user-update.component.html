@@ -1,0 +1,41 @@
+<form class="flex flex-row justify-center place-items-center h-full w-full" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="basis-1/4  p-5 flex flex-col gap-y-2">
+
+    <div class="flex flex-col mb-3">
+      <span class="text-xl font-bold">Ubah akun</span>
+      <span class="text-xs text-slate-500">Isi untuk menambah akun</span>
+    </div>
+
+    <div class="flex flex-col gap-y-1">
+      <div class="flex flex-row bg-slate-100 gap-x-3 px-3 place-items-center rounded-lg"
+        [ngClass]="(name?.touched && name?.hasError('required')) ? 'border-2 border-red-400' : ''">
+        <fa-icon [icon]="icon.faUser" class="basis-1/8 text-center"></fa-icon>
+        <input type="email" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Name"
+          formControlName="name">
+        <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
+      </div>
+      <span class="text-red-500 text-xs ml-3" *ngIf="name?.hasError('required') && email?.touched">Nama harus di
+        isi!</span>
+    </div>
+
+    <div class="flex flex-col gap-y-1">
+      <div class="flex flex-row bg-slate-100 gap-x-3 px-3 place-items-center rounded-lg"
+        [ngClass]="(email?.touched && email?.hasError('required')) || email?.hasError('email') ? 'border-2 border-red-400' : ''">
+        <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon>
+        <input type="email" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Email"
+          formControlName="email">
+        <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
+      </div>
+      <span class="text-red-500 text-xs ml-3" *ngIf="email?.hasError('required') && email?.touched">Email harus di
+        isi!</span>
+      <span class="text-red-500 text-xs ml-3" *ngIf="email?.hasError('email')">Email tidak valid!</span>
+    </div>
+
+    <div class="flex flex-row gap-x-2">
+      <button class="bg-red-500 rounded-lg p-1 hover:bg-red-600 text-white grow" type="button" (click)="close()">Batal</button>
+      <button class="bg-green-500 rounded-lg p-1 hover:bg-green-600 text-white grow" type="submit">Tambah</button>
+
+    </div>
+
+  </div>
+</form>
