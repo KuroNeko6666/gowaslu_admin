@@ -14,7 +14,7 @@
           formControlName="name">
         <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
       </div>
-      <span class="text-red-500 text-xs ml-3" *ngIf="name?.hasError('required') && email?.touched">Nama harus di
+      <span class="text-red-500 text-xs ml-3" *ngIf="name?.hasError('required') && name?.touched">Nama harus di
         isi!</span>
     </div>
 
@@ -33,7 +33,7 @@
 
     <div class="flex flex-row gap-x-2">
       <button class="bg-red-500 rounded-lg p-1 hover:bg-red-600 text-white grow" type="button" (click)="close()">Batal</button>
-      <button class="bg-green-500 rounded-lg p-1 hover:bg-green-600 text-white grow" type="submit">Tambah</button>
+      <button class="bg-green-500 rounded-lg p-1 hover:bg-green-600 text-white grow" type="submit">Ubah</button>
 
     </div>
 

@@ -1,0 +1,80 @@
+<div class="flex flex-col gap-y-2">
+  <div class="bg-white shadow-lg rounded-lg p-3 overflow-auto flex flex-col">
+    <div class="grid grid-cols-5 pb-4 pt-2">
+      <div class="col-span-5 md:col-span-2 place-items-center">
+        <span class="font-bold text-lg">Tabel user</span>
+      </div>
+      <div class="col-span-5 md:col-span-3  flex flex-row gap-2 place-items-center">
+        <input type="text" class=" basis-3/5 focus:outline-none bg-slate-100 rounded-lg px-2 py-2 text-xs"
+          placeholder="Cari data ..." [formControl]="searchInput">
+        <button class="basis-1/5 bg-blue-500 hover:bg-blue-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white">
+          <span class="text-sm">
+            Cari
+          </span>
+        </button>
+        <button class="basis-1/5 bg-green-500 hover:bg-green-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white"
+          (click)="create()">
+          <span class="text-sm">
+            Tambah
+          </span>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="data" class="flex flex-col gap-2">
+      <table class="w-full">
+        <thead class="text-left bg-green-200">
+          <tr>
+            <th class="p-2 ">No</th>
+            <th class="p-2">Title</th>
+            <th class="p-2">Content</th>
+            <th class="p-2">Thumbnail Url</th>
+            <th class="p-2 w-32">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of data; let i=index">
+            <tr [ngClass]="(i + 1) % 2 === 0 ? 'bg-green-50' : ''">
+              <td class="p-2">{{ i + 1 }}</td>
+              <td class="p-2">{{ item.title }}</td>
+              <td class="p-2 text-ellipsis overflow-hidden">{{ item.content }}</td>
+              <td class="p-2 w-20"><a
+                  class="bg-blue-500 hover:bg-blue-600 py-1 px-3 rounded-lg text-white"
+                  [href]="item.thumbnail">
+                  Gambar
+                </a></td>
+              <td class="p-2 grid grid-cols-2 gap-2">
+                <button class="bg-blue-500 hover:bg-blue-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white"
+                  (click)="update(item)">
+                  <fa-icon [icon]="icon.faEdit" class="text-md"></fa-icon>
+                </button>
+                <button class="bg-red-500 hover:bg-red-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white"
+                  (click)="delete(item.id)">
+                  <fa-icon [icon]="icon.faDelete" class="text-md"></fa-icon>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      <ng-container *ngIf="allData.length">
+        <div class="flex flex-row gap-2  place-items-center">
+          <button class="bg-green-500 hover:bg-green-600 py-auto px-4 rounded-full text-white text-center"
+            [disabled]="page <= 0" (click)="changePage(false)">
+            <fa-icon [icon]="icon.faArrowLeft" class="text-xs"></fa-icon>
+          </button>
+          <div class="text-xs">
+            page {{ page + 1 }} of {{ allData.length }}
+          </div>
+          <button class="bg-green-500 hover:bg-green-600 py-auto px-4 rounded-full text-white text-center "
+            [disabled]="page > allData.length" (click)="changePage(true)">
+            <fa-icon [icon]="icon.faArrowRight" class="text-xs"></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+
+    </div>
+    <div *ngIf="!data" class="text-center">
+      <span>Tidak ada data.</span>
+    </div>
+  </div>
+</div>

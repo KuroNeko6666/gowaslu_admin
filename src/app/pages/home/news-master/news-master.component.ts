@@ -5,13 +5,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { faChevronLeft, faChevronRight, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/api/api.service';
+import { ActivityComponent } from 'src/app/components/modals/activity/activity.component';
 import { DeleteComponent } from 'src/app/components/modals/delete/delete.component';
-import { UserCreateComponent } from 'src/app/components/modals/user/user-create/user-create.component';
-import { UserUpdateComponent } from 'src/app/components/modals/user/user-update/user-update.component';
-import { AccountCreateInterfaces } from 'src/app/interfaces/account-create-interfaces';
-import { AccountInterfaces } from 'src/app/interfaces/account-interfaces';
+import { NewsComponent } from 'src/app/components/modals/news/news.component';
+import { ActivityInterface } from 'src/app/interfaces/activity-interface';
+import { NewsInterface } from 'src/app/interfaces/news-interface';
 import { ResponseInterfaces } from 'src/app/interfaces/response-interfaces';
 import { AccountModel } from 'src/app/models/account-model';
+import { NewsModel } from 'src/app/models/news-model';
 
 const ICON_DATA = {
   faEdit: faEdit,
@@ -21,12 +22,11 @@ const ICON_DATA = {
 }
 
 @Component({
-  selector: 'app-user-master',
-  templateUrl: './user-master.component.html',
-  styleUrls: ['./user-master.component.css']
+  selector: 'app-news-master',
+  templateUrl: './news-master.component.html',
+  styleUrls: ['./news-master.component.css']
 })
-export class UserMasterComponent {
-
+export class NewsMasterComponent {
   icon = ICON_DATA
   data: any[] = []
   allData: any[] = []
@@ -45,9 +45,10 @@ export class UserMasterComponent {
     this.searchInput.valueChanges.subscribe(val => {
       this.search(val!)
     })
-    this.api.getAllUser().subscribe((res) => {
+    this.api.getAllNews().subscribe((res) => {
+
       if (res.message == 'Success') {
-        this.veryAllData = res.data as AccountModel[]
+        this.veryAllData = res.data as NewsModel[]
         this.allData = this.paginate(this.veryAllData)
         this.data = this.allData[this.page]
       }
@@ -56,44 +57,33 @@ export class UserMasterComponent {
   }
 
   create() {
-    this.dialog.open(UserCreateComponent, {
-      width: '300',
-      data: 1,
-    }).afterClosed().subscribe((result: AccountCreateInterfaces | null) => {
+    this.dialog.open(NewsComponent, {
+      width: '300'
+    }).afterClosed().subscribe((result: NewsInterface | null) => {
       if (result != null) {
-        this.api.createAccount(result).subscribe((res: ResponseInterfaces) => {
-          console.log(res);
+        this.api.createNews(result).subscribe((res: ResponseInterfaces) => {
           if (res.message == 'Success') {
-            console.log(res);
-            this.router.navigateByUrl(this.router.url).then((res) => {
-              if(res){
-                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
-                window.location.reload()
-              }
-            })
+            this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            window.location.reload()
           } else {
-            this.snackbar.open('terjadi kesalahan', 'oke', {duration: 3000})
+            this.snackbar.open(res.message, 'oke', {duration: 3000})
           }
         })
       }
     })
   }
 
-  update(data: AccountModel) {
-    this.dialog.open(UserUpdateComponent, {
+  update(data: NewsModel) {
+    this.dialog.open(NewsComponent, {
       width: '300',
       data: data
-    }).afterClosed().subscribe((res: AccountInterfaces | null) => {
+    }).afterClosed().subscribe((res: NewsInterface | null) => {
       if (res != null) {
-        this.api.updateAccount(res, data.id).subscribe((res: any) => {
+        this.api.updateNews(res, data.id).subscribe((res: any) => {
           console.log(res);
           if (res.message == 'Success') {
-            this.router.navigateByUrl(this.router.url).then((res) => {
-              if(res){
-                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
-                window.location.reload()
-              }
-            })
+            this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            window.location.reload()
           } else {
             this.snackbar.open('terjadi kesalahan', 'oke', {duration: 3000})
           }
@@ -107,14 +97,10 @@ export class UserMasterComponent {
       width: '300'
     }).afterClosed().subscribe((result: boolean | null) => {
       if (result) {
-        this.api.deleteAccount(id).subscribe((res: ResponseInterfaces) => {
+        this.api.deleteNews(id).subscribe((res: ResponseInterfaces) => {
           if (res.message == 'Success') {
-            this.router.navigateByUrl(this.router.url).then((res) => {
-              if(res){
-                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
             window.location.reload()
-              }
-            })
           } else {
             this.snackbar.open('terjadi kesalahan', 'oke', {duration: 3000})
           }
@@ -159,5 +145,4 @@ export class UserMasterComponent {
       this.data = this.allData[this.page]
     }
   }
-
 }

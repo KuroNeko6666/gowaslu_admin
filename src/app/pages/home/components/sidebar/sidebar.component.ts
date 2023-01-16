@@ -37,6 +37,20 @@ const MENU_DATA = [
       }
     ]
   },
+  {
+    name: 'News Master',
+    icon: faTableColumns,
+    path: '/home/news',
+    collapse: false,
+    children: []
+  },
+  {
+    name: 'Activity Master',
+    icon: faTableColumns,
+    path: '/home/activity',
+    collapse: false,
+    children: []
+  },
 ]
 
 @Component({

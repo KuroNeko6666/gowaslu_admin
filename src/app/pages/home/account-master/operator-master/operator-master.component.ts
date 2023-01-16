@@ -70,7 +70,8 @@ export class OperatorMasterComponent {
             console.log(res);
             this.router.navigateByUrl(this.router.url).then((res) => {
               if(res){
-                this.snackbar.open('account berhasil ditambahkan', 'oke', {duration: 3000})
+                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            window.location.reload()
               }
             })
           } else {
@@ -92,7 +93,8 @@ export class OperatorMasterComponent {
           if (res.message == 'Success') {
             this.router.navigateByUrl(this.router.url).then((res) => {
               if(res){
-                this.snackbar.open('account berhasil ditambahkan', 'oke', {duration: 3000})
+                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            window.location.reload()
               }
             })
           } else {
@@ -112,7 +114,8 @@ export class OperatorMasterComponent {
           if (res.message == 'Success') {
             this.router.navigateByUrl(this.router.url).then((res) => {
               if(res){
-                this.snackbar.open('account berhasil ditambahkan', 'oke', {duration: 3000})
+                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            window.location.reload()
               }
             })
           } else {

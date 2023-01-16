@@ -12,6 +12,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardDashboardComponent } from './components/card-dashboard/card-dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NewsMasterComponent } from './news-master/news-master.component';
+import { ActivityMasterComponent } from './activity-master/activity-master.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     OperatorMasterComponent,
     SidebarComponent,
     HeaderComponent,
-    CardDashboardComponent
+    CardDashboardComponent,
+    NewsMasterComponent,
+    ActivityMasterComponent
   ],
   imports: [
     CommonModule,

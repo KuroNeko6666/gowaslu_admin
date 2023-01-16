@@ -15,6 +15,7 @@ import { UserUpdateComponent } from './components/modals/user/user-update/user-u
 import { NewsComponent } from './components/modals/news/news.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteComponent } from './components/modals/delete/delete.component';
+import { ActivityComponent } from './components/modals/activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DeleteComponent } from './components/modals/delete/delete.component';
     UserCreateComponent,
     UserUpdateComponent,
     NewsComponent,
-    DeleteComponent
+    DeleteComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,

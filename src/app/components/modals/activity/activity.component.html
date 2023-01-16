@@ -2,41 +2,42 @@
   <div class="basis-1/4  p-5 flex flex-col gap-y-2">
 
     <div class="flex flex-col mb-3">
-      <span class="text-xl font-bold">Tambah news</span>
-      <span class="text-xs text-slate-500">Isi untuk menambah news</span>
+      <span class="text-xl font-bold">Tambah Activity</span>
+      <span class="text-xs text-slate-500">Isi untuk menambah Activity</span>
     </div>
 
     <div class="flex flex-col gap-y-1">
       <div class="flex flex-row bg-slate-100 gap-x-3 px-3 place-items-center rounded-lg"
-        [ngClass]="(title?.touched && title?.hasError('required')) ? 'border-2 border-red-400' : ''">
+        [ngClass]="(name?.touched && name?.hasError('required')) ? 'border-2 border-red-400' : ''">
         <fa-icon [icon]="icon.faUser" class="basis-1/8 text-center"></fa-icon>
-        <input type="text" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Judul"
-          formControlName="title">
+        <input type="text" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Name"
+          formControlName="name">
         <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
       </div>
-      <span class="text-red-500 text-xs ml-3" *ngIf="title?.hasError('required') && title?.touched">Judul harus di isi!</span>
+      <span class="text-red-500 text-xs ml-3" *ngIf="name?.hasError('required') && name?.touched">Nama harus di isi!</span>
     </div>
 
     <div class="flex flex-col gap-y-1">
       <div class="flex flex-row bg-slate-100 gap-x-3 px-3 place-items-center rounded-lg"
-        [ngClass]="(content?.touched && content?.hasError('required')) ? 'border-2 border-red-400' : ''">
+        [ngClass]="(place?.touched && place?.hasError('required')) ? 'border-2 border-red-400' : ''">
         <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon>
-        <input type="text" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Konten"
-          formControlName="content">
+        <input type="text" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Tempat"
+          formControlName="place">
         <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
       </div>
-      <span class="text-red-500 text-xs ml-3" *ngIf="content?.hasError('required') && content?.touched">Kontent harus di
+      <span class="text-red-500 text-xs ml-3" *ngIf="place?.hasError('required') && place?.touched">Tempat harus di
         isi!</span>
     </div>
+
     <div class="flex flex-col gap-y-1">
       <div class="flex flex-row bg-slate-100 gap-x-3 px-3 place-items-center rounded-lg"
-        [ngClass]="(thumbnail?.touched && thumbnail?.hasError('required')) ? 'border-2 border-red-400' : ''">
+        [ngClass]="(place?.touched && place?.hasError('required')) ? 'border-2 border-red-400' : ''">
         <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon>
-        <input type="file" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Konten"
-          (change)="onFileSelect($event.target)">
+        <input (change)="setTime($event)" type="datetime-local" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Tanggal"
+          formControlName="place">
         <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
       </div>
-      <span class="text-red-500 text-xs ml-3" *ngIf="thumbnail?.hasError('required') && thumbnail?.touched">Kontent harus di
+      <span class="text-red-500 text-xs ml-3" *ngIf="place?.hasError('required') && place?.touched">Tanggal harus di
         isi!</span>
     </div>
 
