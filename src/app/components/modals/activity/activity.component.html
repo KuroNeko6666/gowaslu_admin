@@ -34,7 +34,7 @@
         [ngClass]="(place?.touched && place?.hasError('required')) ? 'border-2 border-red-400' : ''">
         <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon>
         <input (change)="setTime($event)" type="datetime-local" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Tanggal"
-          formControlName="place">
+          >
         <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
       </div>
       <span class="text-red-500 text-xs ml-3" *ngIf="place?.hasError('required') && place?.touched">Tanggal harus di
