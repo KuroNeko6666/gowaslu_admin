@@ -50,6 +50,7 @@ export class UserMasterComponent {
         this.veryAllData = res.data as AccountModel[]
         this.allData = this.paginate(this.veryAllData)
         this.data = this.allData[this.page]
+
       }
     }
     )

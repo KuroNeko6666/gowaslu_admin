@@ -14,6 +14,7 @@ import { CardDashboardComponent } from './components/card-dashboard/card-dashboa
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewsMasterComponent } from './news-master/news-master.component';
 import { ActivityMasterComponent } from './activity-master/activity-master.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ActivityMasterComponent } from './activity-master/activity-master.compo
     CommonModule,
     HomeRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
   ]
 })
 export class HomeModule { }
