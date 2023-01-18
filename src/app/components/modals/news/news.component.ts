@@ -27,39 +27,40 @@ export class NewsComponent {
     private snackbar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
 
-  ){}
+  ) { }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    if(this.data != null){
+    if (this.data != null) {
       this.title?.setValue(this.data.title);
       this.content?.setValue(this.data.content);
       // this.thumbnail?.setValue(this.data.thumbnail);
     }
   }
 
-  image : any = null
+  image: any = null
+  path: any = null
 
   form = this.fb.group({
-    title : ['', [Validators.required]],
-    content : ['', [Validators.required]],
+    title: ['', [Validators.required]],
+    content: ['', [Validators.required]],
   })
 
-  get title(){
+  get title() {
     return this.form.get('title')
   }
 
-  get content(){
+  get content() {
     return this.form.get('content')
   }
 
-  get thumbnail(){
+  get thumbnail() {
     return this.form.get('thumbnail')
   }
 
-  submit(){
-    if(this.title?.valid && this.content?.valid){
+  submit() {
+    if (this.title?.valid && this.content?.valid) {
       let data: NewsInterface = {
         title: this.title.value!,
         content: this.content.value!,
@@ -67,26 +68,29 @@ export class NewsComponent {
       }
       this.ref.close(data)
     } else {
-      this.snackbar.open('terjadi kesalahan', 'oke', {duration:3000})
+      this.snackbar.open('terjadi kesalahan', 'oke', { duration: 3000 })
     }
   }
 
-  close(){
+  close() {
     this.ref.close()
   }
 
   onFileSelect(input: any) {
     // console.log(input.files[0]);
     this.image = input.files[0]
-    // if (input.files && input.files[0]) {
-    //   var reader = new FileReader();
-    //   reader.onload = (e: any) => {
-    //     console.log('Got here: ', e.target.files[0].name);
-    //     // this.obj.photoUrl = e.target.result;
-    //   }
-    //   reader.readAsDataURL(input.files[0]);
-    // }
-  }
+    const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        console.log(e.target.result);
+        this.path = e.target.result;
+      };
+
+      reader.readAsDataURL(this.image);
+    }
+
+
+
 }
 
 

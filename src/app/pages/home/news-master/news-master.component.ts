@@ -57,9 +57,7 @@ export class NewsMasterComponent {
   }
 
   create() {
-    this.dialog.open(NewsComponent, {
-      width: '300'
-    }).afterClosed().subscribe((result: NewsInterface | null) => {
+    this.dialog.open(NewsComponent).afterClosed().subscribe((result: NewsInterface | null) => {
       if (result != null) {
         this.api.createNews(result).subscribe((res: ResponseInterfaces) => {
           if (res.message == 'Success') {
@@ -75,7 +73,6 @@ export class NewsMasterComponent {
 
   update(data: NewsModel) {
     this.dialog.open(NewsComponent, {
-      width: '300',
       data: data
     }).afterClosed().subscribe((res: NewsInterface | null) => {
       if (res != null) {

@@ -1,5 +1,5 @@
-<form class="flex flex-row justify-center place-items-center h-full w-full" [formGroup]="form" (ngSubmit)="submit()">
-  <div class="basis-1/4  p-5 flex flex-col gap-y-2">
+<form class="flex flex-row justify-center place-items-center h-full w-fit" [formGroup]="form" (ngSubmit)="submit()">
+  <div class=" p-5 flex flex-col gap-y-2">
 
     <div class="flex flex-col mb-3">
       <span class="text-xl font-bold">Tambah news</span>
@@ -14,7 +14,8 @@
           formControlName="title">
         <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
       </div>
-      <span class="text-red-500 text-xs ml-3" *ngIf="title?.hasError('required') && title?.touched">Judul harus di isi!</span>
+      <span class="text-red-500 text-xs ml-3" *ngIf="title?.hasError('required') && title?.touched">Judul harus di
+        isi!</span>
     </div>
 
     <div class="flex flex-col gap-y-1">
@@ -36,12 +37,25 @@
           (change)="onFileSelect($event.target)">
         <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
       </div>
-      <span class="text-red-500 text-xs ml-3" *ngIf="thumbnail?.hasError('required') && thumbnail?.touched">Kontent harus di
+      <span class="text-red-500 text-xs ml-3" *ngIf="thumbnail?.hasError('required') && thumbnail?.touched">Kontent
+        harus di
         isi!</span>
     </div>
+    <ng-container *ngIf="data != null && image == null && path == null">
+      <div class="flex flex-col bg-red-500">
+        <img [src]="data.thumbnail" alt="" class="w-72 bg-green-500 object-cover">
+      </div>
+    </ng-container>
+    <ng-container *ngIf="image != null && path != null">
+      <div class="flex flex-col bg-red-500">
+        <img [src]="path" alt="" class="w-72 bg-green-500 object-cover">
+      </div>
+    </ng-container>
+
 
     <div class="flex flex-row gap-x-2">
-      <button class="bg-red-500 rounded-lg p-1 hover:bg-red-600 text-white grow" type="button" (click)="close()">Batal</button>
+      <button class="bg-red-500 rounded-lg p-1 hover:bg-red-600 text-white grow" type="button"
+        (click)="close()">Batal</button>
       <button class="bg-green-500 rounded-lg p-1 hover:bg-green-600 text-white grow" type="submit">Submit</button>
 
     </div>
