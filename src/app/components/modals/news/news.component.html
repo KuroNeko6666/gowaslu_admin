@@ -22,8 +22,7 @@
       <div class="flex flex-row bg-slate-100 gap-x-3 px-3 place-items-center rounded-lg"
         [ngClass]="(content?.touched && content?.hasError('required')) ? 'border-2 border-red-400' : ''">
         <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon>
-        <input type="text" class="focus:outline-none grow py-2 bg-transparent text-sm" placeholder="Konten"
-          formControlName="content">
+          <textarea cols="30" rows="5" class="focus:outline-none grow py-2 bg-transparent text-sm align-middle" formControlName="content" placeholder="Konten"></textarea>
         <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
       </div>
       <span class="text-red-500 text-xs ml-3" *ngIf="content?.hasError('required') && content?.touched">Kontent harus di
