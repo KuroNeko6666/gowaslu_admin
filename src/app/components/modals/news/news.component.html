@@ -19,11 +19,9 @@
     </div>
 
     <div class="flex flex-col gap-y-1">
-      <div class="flex flex-row bg-slate-100 gap-x-3 px-3 place-items-center rounded-lg"
+      <div class="flex flex-row bg-slate-100 gap-x-3 px-3 place-items-center rounded-lg py-3"
         [ngClass]="(content?.touched && content?.hasError('required')) ? 'border-2 border-red-400' : ''">
-        <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon>
-          <textarea cols="30" rows="5" class="focus:outline-none grow py-2 bg-transparent text-sm align-middle" formControlName="content" placeholder="Konten"></textarea>
-        <!-- <fa-icon [icon]="icon.faMail" class="basis-1/8 text-center"></fa-icon> -->
+          <angular-editor formControlName="content" [config]="config"></angular-editor>
       </div>
       <span class="text-red-500 text-xs ml-3" *ngIf="content?.hasError('required') && content?.touched">Kontent harus di
         isi!</span>
@@ -41,12 +39,12 @@
         isi!</span>
     </div>
     <ng-container *ngIf="data != null && image == null && path == null">
-      <div class="flex flex-col bg-red-500">
-        <img [src]="data.thumbnail" alt="" class="w-72 bg-green-500 object-cover">
+      <div class="flex flex-col ">
+        <img [src]="data.thumbnail" alt="" class="w-72 bg-green-500 object-cover grow">
       </div>
     </ng-container>
     <ng-container *ngIf="image != null && path != null">
-      <div class="flex flex-col bg-red-500 w-72">
+      <div class="flex flex-col  w-72">
         <img [src]="path" alt="" class="w-full bg-green-500 object-cover">
       </div>
     </ng-container>

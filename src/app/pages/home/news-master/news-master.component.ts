@@ -62,8 +62,8 @@ export class NewsMasterComponent {
       if (result != null) {
         this.api.createNews(result).subscribe((res: ResponseInterfaces) => {
           if (res.message == 'Success') {
-            this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
             window.location.reload()
+            this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
           } else {
             this.snackbar.open(res.message, 'oke', {duration: 3000})
           }

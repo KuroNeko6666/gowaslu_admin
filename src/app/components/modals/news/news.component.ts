@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { faUser, faEnvelope, faLock, faHeading, faTextHeight, faImage } from '@fortawesome/free-solid-svg-icons';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { AccountCreateInterfaces } from 'src/app/interfaces/account-create-interfaces';
 import { NewsInterface } from 'src/app/interfaces/news-interface';
 import { UserCreateComponent } from '../user/user-create/user-create.component';
@@ -88,6 +89,35 @@ export class NewsComponent {
 
       reader.readAsDataURL(this.image);
     }
+
+    config: AngularEditorConfig = {
+      editable: true,
+      spellcheck: true,
+      height: '15rem',
+      minHeight: '5rem',
+      placeholder: 'Enter text here...',
+      translate: 'no',
+      defaultParagraphSeparator: 'p',
+      defaultFontName: 'Arial',
+      toolbarHiddenButtons: [
+        ['bold']
+        ],
+      customClasses: [
+        {
+          name: "quote",
+          class: "quote",
+        },
+        {
+          name: 'redText',
+          class: 'redText'
+        },
+        {
+          name: "titleText",
+          class: "titleText",
+          tag: "h1",
+        },
+      ]
+    };
 
 
 

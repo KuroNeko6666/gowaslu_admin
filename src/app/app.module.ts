@@ -16,6 +16,7 @@ import { NewsComponent } from './components/modals/news/news.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteComponent } from './components/modals/delete/delete.component';
 import { ActivityComponent } from './components/modals/activity/activity.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ActivityComponent } from './components/modals/activity/activity.compone
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

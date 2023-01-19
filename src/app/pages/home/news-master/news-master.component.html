@@ -28,21 +28,25 @@
             <th class="p-2">Title</th>
             <th class="p-2">Content</th>
             <th class="p-2">Thumbnail</th>
-            <th class="p-2 w-32">Aksi</th>
+            <th class="p-2">Aksi</th>
           </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let item of data; let i=index">
-            <tr [ngClass]="(i + 1) % 2 === 0 ? 'bg-green-50' : ''">
+            <tr [ngClass]="(i + 1) % 2 === 0 ? 'bg-green-50' : ''" class="max-h-52">
               <td class="p-2">{{ i + 1 }}</td>
-              <td class="p-2">{{ item.title }}</td>
-              <td class="p-2 text-ellipsis overflow-hidden">{{ item.content }}</td>
+              <td class="p-2 w-1/3 leading-snug">{{ item.title }}</td>
+              <td class="p-2 max-w-1/3 ">
+                <p class=" max-h-16 max-w-full text-elipsis overflow-hidden leading-snug ">
+                  {{ item.content }}
+                </p>
+              </td>
               <td class="p-2 w-20"><a
                   class="bg-blue-500 hover:bg-blue-600 py-1 px-3 rounded-lg text-white"
                   [href]="item.thumbnail">
                   Gambar
                 </a></td>
-              <td class="p-2 justify-center text-center">
+              <td class="p-2 justify-center text-center w-72">
                 <button class="bg-blue-500 hover:bg-blue-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white w-10 inline-block mr-0 md:mr-2"
                   (click)="update(item)">
                   <fa-icon [icon]="icon.faEdit" class="text-md"></fa-icon>
