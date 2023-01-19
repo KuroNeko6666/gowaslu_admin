@@ -22,6 +22,8 @@ export class ApiService {
 
   logout(){
     localStorage.clear()
+
+    window.location.reload()
   }
 
   checkLogin(){

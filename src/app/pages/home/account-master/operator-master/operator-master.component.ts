@@ -68,12 +68,8 @@ export class OperatorMasterComponent {
           console.log(res);
           if (res.message == 'Success') {
             console.log(res);
-            this.router.navigateByUrl(this.router.url).then((res) => {
-              if(res){
-                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
             window.location.reload()
-              }
-            })
           } else {
             this.snackbar.open('terjadi kesalahan', 'oke', {duration: 3000})
           }
@@ -91,12 +87,8 @@ export class OperatorMasterComponent {
         this.api.updateAccount(res, data.id).subscribe((res: any) => {
           console.log(res);
           if (res.message == 'Success') {
-            this.router.navigateByUrl(this.router.url).then((res) => {
-              if(res){
-                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
             window.location.reload()
-              }
-            })
           } else {
             this.snackbar.open('terjadi kesalahan', 'oke', {duration: 3000})
           }
@@ -112,12 +104,8 @@ export class OperatorMasterComponent {
       if (result) {
         this.api.deleteAccount(id).subscribe((res: ResponseInterfaces) => {
           if (res.message == 'Success') {
-            this.router.navigateByUrl(this.router.url).then((res) => {
-              if(res){
-                this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
+            this.snackbar.open('aksi berhasil', 'oke', {duration: 3000})
             window.location.reload()
-              }
-            })
           } else {
             this.snackbar.open('terjadi kesalahan', 'oke', {duration: 3000})
           }
@@ -127,7 +115,7 @@ export class OperatorMasterComponent {
   }
 
   paginate(data: any[]) {
-    let chunkSize: number = 5
+    let chunkSize: number = 10
     let queue: number = 0
     let result: any[] = []
     let chunk: any[] = []

@@ -36,10 +36,10 @@
           [ngClass]="currentPath?.includes(item.path) || item.collapse ? 'bg-green-50 ' : 'hover:bg-green-50' ">
           <a href="javascript:void(0)" class="flex flex-row py-2" (click)="item.collapse = !item.collapse">
             <div class="basis-1/5 text-center">
-              <fa-icon [icon]="icon.faHome" class="text-sm"></fa-icon>
+              <fa-icon [icon]="item.icon" class="text-sm"></fa-icon>
             </div>
             <div class="basis-3/5">
-              <span class="text-sm">Account Master</span>
+              <span class="text-sm">{{ item.name }}</span>
             </div>
             <div class="basis-1/5 text-center">
               <fa-icon [icon]="currentPath?.includes(item.path) || item.collapse ? icon.faArrowDown : icon.faArrowRight"

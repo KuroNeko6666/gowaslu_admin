@@ -21,6 +21,7 @@ const ICON_DATA = {
 export class HomeComponent {
   icon = ICON_DATA
   isHidden = false
+  user:any
 
   constructor(
     private router: Router,
@@ -33,6 +34,10 @@ export class HomeComponent {
     if(!this.api.checkLogin()){
       this.router.navigateByUrl('login')
     }
+
+    this.user = JSON.parse(localStorage.getItem('user')!)
+    console.log(this.user);
+
   }
 
   logout(){

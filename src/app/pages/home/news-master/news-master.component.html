@@ -27,7 +27,7 @@
             <th class="p-2 ">No</th>
             <th class="p-2">Title</th>
             <th class="p-2">Content</th>
-            <th class="p-2">Thumbnail Url</th>
+            <th class="p-2">Thumbnail</th>
             <th class="p-2 w-32">Aksi</th>
           </tr>
         </thead>
@@ -42,12 +42,12 @@
                   [href]="item.thumbnail">
                   Gambar
                 </a></td>
-              <td class="p-2 grid grid-cols-2 gap-2">
-                <button class="bg-blue-500 hover:bg-blue-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white"
+              <td class="p-2 justify-center text-center">
+                <button class="bg-blue-500 hover:bg-blue-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white w-10 inline-block mr-0 md:mr-2"
                   (click)="update(item)">
                   <fa-icon [icon]="icon.faEdit" class="text-md"></fa-icon>
                 </button>
-                <button class="bg-red-500 hover:bg-red-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white"
+                <button class="bg-red-500 hover:bg-red-600 px-auto py-1 px-2 lg:px-0 rounded-lg text-white w-10 inline-block"
                   (click)="delete(item.id)">
                   <fa-icon [icon]="icon.faDelete" class="text-md"></fa-icon>
                 </button>

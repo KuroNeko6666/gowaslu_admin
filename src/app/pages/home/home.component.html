@@ -7,11 +7,15 @@
   </div>
   <div class=" p-3 flex flex-col gap-y-3"
     [ngClass]="!isHidden ? 'col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10' : 'col-span-12' ">
-    <div class="shadow-lg p-3 bg-white rounded-lg">
+    <div class="shadow-lg p-3 bg-white rounded-lg flex flex-row">
       <button class="hover:bg-slate-100 px-3 py-2 rounded-full" (click)="hideSideBar()">
         <fa-icon [icon]="icon.faBars"></fa-icon>
       </button>
-      <button class="hover:bg-slate-100 px-3 py-2 rounded-full" (click)="logout()">
+      <div class="grow flex flex-row place-items-center">
+        <span class="text-sm mr-2">Halo, </span>
+        <span class="text-lg font-bold">{{ user.name }}</span>
+      </div>
+      <button class="hover:bg-slate-100 px-3 py-2 rounded-full bg-slate-50" (click)="logout()">
         logout
       </button>
     </div>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { faBars, faXmark, faHome, faChevronDown, faChevronRight, faCircle, faTableColumns, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faXmark, faHome, faChevronDown, faChevronRight, faCircle, faTableColumns, faUser, faNewspaper, faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 const ICON_DATA = {
   faX: faXmark,
@@ -39,14 +39,14 @@ const MENU_DATA = [
   },
   {
     name: 'News Master',
-    icon: faTableColumns,
+    icon: faNewspaper,
     path: '/home/news',
     collapse: false,
     children: []
   },
   {
     name: 'Activity Master',
-    icon: faTableColumns,
+    icon: faCalendar,
     path: '/home/activity',
     collapse: false,
     children: []

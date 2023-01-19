@@ -111,7 +111,7 @@ export class ActivityMasterComponent {
   }
 
   paginate(data: any[]) {
-    let chunkSize: number = 5
+    let chunkSize: number = 10
     let queue: number = 0
     let result: any[] = []
     let chunk: any[] = []
@@ -131,7 +131,7 @@ export class ActivityMasterComponent {
   }
 
   search(text: string) {
-    let data = this.veryAllData.filter((val) => val.name.includes(text!) || val.email.includes(text!))
+    let data = this.veryAllData.filter((val) => val.name.includes(text!) || val.place.includes(text!) || val.time.includes(text!))
     this.page = 0
     this.allData = this.paginate(data)
     this.data = this.allData[this.page]

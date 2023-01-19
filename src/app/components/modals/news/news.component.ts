@@ -2,15 +2,15 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope, faLock, faHeading, faTextHeight, faImage } from '@fortawesome/free-solid-svg-icons';
 import { AccountCreateInterfaces } from 'src/app/interfaces/account-create-interfaces';
 import { NewsInterface } from 'src/app/interfaces/news-interface';
 import { UserCreateComponent } from '../user/user-create/user-create.component';
 
 const ICON_DATA = {
-  faUser: faUser,
-  faMail: faEnvelope,
-  faPassword: faLock
+  faUser: faHeading,
+  faMail: faTextHeight,
+  faThumbail: faImage
 }
 
 @Component({
